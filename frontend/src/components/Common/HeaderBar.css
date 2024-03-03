@@ -1,0 +1,110 @@
+/* src/components/Common/HeaderBar.css */
+
+.header-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    z-index: 1;
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .nav-links ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .nav-links ul li {
+    margin: 0 10px;
+  }
+  
+  .nav-links ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+  }
+  
+  .nav-links ul li a:hover {
+    color: #666;
+  }
+  
+  .login-signup-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  .hamburger-menu {
+    display: none; /* Hide the hamburger menu icon by default */
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .logo {
+      font-size: 20px;
+    }
+  }
+  
+  /* Mobile Styles */
+  @media (max-width: 425px) {
+    .header-bar {
+      flex-direction: column; /* Adjust to column layout for smaller screens */
+      align-items: center; /* Center align content */
+    }
+  
+    .nav-links ul {
+      display: none; /* Hide navigation links by default on mobile */
+    }
+  
+    .hamburger-menu {
+      display: flex; /* Show the hamburger menu icon */
+      align-items: center;
+      cursor: pointer;
+      font-size: 24px;
+    }
+  
+    .nav-links.show ul {
+      display: flex; /* Show navigation links when the show class is applied */
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #fff; /* Adjust background color as needed */
+      z-index: 1;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add box shadow for better visibility */
+    }
+  
+    .nav-links.show ul li {
+      margin: 0;
+      padding: 10px 20px;
+      border-bottom: 1px solid #eee; /* Add border between navigation links */
+    }
+  
+    .login-signup-btn {
+      display: flex; /* Display Login/SignUp button on mobile */
+      justify-content: center; /* Center align the button */
+      font-size: 17px;
+    }
+  
+    .right {
+      width: 100%; /* Ensure full width for right content */
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px; /* Add padding to top for space */
+    }
+  }
+  
