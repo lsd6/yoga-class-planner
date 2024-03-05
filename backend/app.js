@@ -9,7 +9,10 @@ const PORT = process.env.PORT || 5001;
 app.use(bodyParser.json());
 app.use(cors()); // Enable CORS for all routes
 
-mongoose.connect('mongodb://localhost/yoga-class-planner', { useNewUrlParser: true, useUnifiedTopology: true })
+// Update the connection string with the one from MongoDB Atlas
+const MONGODB_URI = 'mongodb+srv://sowjanya:Sowjanya34@cluster0.9utgvzp.mongodb.net/';
+
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Failed to connect to MongoDB', err));
 
