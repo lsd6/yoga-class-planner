@@ -1,0 +1,109 @@
+/* src/components/HeaderBar.css */
+
+.header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    color: #ffffff; /* Update text color */
+    background-color: transparent; /* Set header background color to transparent */
+}
+
+.logo img {
+    width: 50px; /* Adjust the logo size as needed */
+}
+
+.company-name {
+    margin-left: 10px;
+    color: black; /* Set text color to black */
+}
+
+.company-name h1 {
+    margin: 0;
+    font-size: 30px;
+}
+
+.nav-links ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.login-btn button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.login-btn button:hover {
+    background-color: #333;
+}
+
+.login-btn {
+    margin-left: auto;
+}
+
+/* Hamburger menu icon */
+.hamburger-menu {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: black; /* Set hamburger menu color to black */
+}
+
+/* Mobile Styles */
+@media (max-width: 425px) {
+    .logo img {
+        width: 40px;
+    }
+
+    .company-name h1 {
+        font-size: 24px;
+    }
+
+    .nav-links ul {
+        list-style-type: none;
+        display: none; /* Hide navigation links by default */
+        position: absolute; /* Position the links absolutely */
+        top: 7%; /* Set top position to be just below the header bar */
+        left: 0;
+        background-color: #ffffff; /* Set background color for better visibility */
+        width: 100%; /* Set width to fill the entire width of the viewport */
+        padding: 20px 0; /* Add padding for spacing */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-btn {
+        display: flex;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+}
+
+/* Mobile Navigation Links */
+.nav-links ul.show {
+    display: flex;
+    flex-direction: column;  
+    position: fixed;
+}
+
+/* Additional styles for HeaderBar */
+.header-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    color: #ffffff;
+    z-index: 2;
+}

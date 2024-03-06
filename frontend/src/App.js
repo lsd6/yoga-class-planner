@@ -1,12 +1,14 @@
+// src/App.js
+
 import React from 'react';
-import BackgroundImageComponent from './components/BackgroundImageComponent';
-import HeaderBar from './components/Common/HeaderBar'; // Import the HeaderBar component
+import Home from './components/Home'; // Import the Home component
+import HeaderBar from './components/HeaderBar'; // Import the HeaderBar component
 
 function App() {
   return (
     <div className="App">
-      <HeaderBar /> {/* Add the HeaderBar component */}
-      <BackgroundImageComponent />
+      <HeaderBar />
+      <Home /> {/* Render the Home component */}
     </div>
   );
 }
