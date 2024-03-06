@@ -1,0 +1,40 @@
+/* src/components/Home.css */
+
+.home-container {
+    position: relative; /* Set position to relative */
+    background-image: url('../../public/Assets/Images/background.jpg'); /* Set background image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh; /* Set height to fill the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff; /* Set text color */
+    text-align: center;
+    z-index: 1;
+  }
+  
+  .content-left,
+  .content-right {
+    position: absolute; /* Position content absolutely */
+    top: 50%; /* Align content vertically */
+    transform: translateY(-50%); /* Adjust for vertical centering */
+  }
+  
+  .content-left {
+    left: 20px; /* Set left position for left content */
+    width: 40%; /* Set width for left content */
+  }
+  
+  .content-right {
+    right: 20px; /* Set right position for right content */
+    width: 40%; /* Set width for right content */
+  }
+  
+  .content-left h5{
+    font-size: 15px;
+    color: rgb(33,23,21);
+  }
+  .content-left h3{
+    color: black;
+  }
