@@ -8,6 +8,9 @@
     color: #ffffff; /* Update text color */
     background-color: transparent; /* Set header background color to transparent */
 }
+.header-bar.hide{
+    display: none;
+}
 
 .logo img {
     width: 50px; /* Adjust the logo size as needed */
@@ -107,3 +110,5 @@
     color: #ffffff;
     z-index: 2;
 }
+
+

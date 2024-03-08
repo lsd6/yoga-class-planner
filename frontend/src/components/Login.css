@@ -1,0 +1,114 @@
+.login-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container label {
+  margin-bottom: 10px;
+}
+
+.login-container input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.login-container select {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+.login-container button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #0056b3;
+}
+
+.login-container button:focus {
+  outline: none;
+}
+
+.login-container .error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+}
+
+/* Add these styles to your Login.css file */
+
+.login-container button.register-button {
+  padding: 12px 24px; /* Adjust padding for larger button */
+  background-color: #28a745; /* Green color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px; /* Increase font size */
+  cursor: pointer;
+}
+
+.login-container button.register-button:hover {
+  background-color: #218838; /* Darker green color on hover */
+}
+/* Add these styles to your Login.css file */
+
+.login-container button.forgot-password-button {
+  padding: 8px 16px; /* Adjust padding for the button */
+  background-color: #ffc107; /* Yellow color */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px; /* Adjust font size */
+  cursor: pointer;
+  margin-top: 10px; /* Add margin to separate from other buttons */
+}
+
+.login-container button.forgot-password-button:hover {
+  background-color: #e0a800; /* Darker yellow color on hover */
+}
+
+.password-input {
+  position: relative;
+}
+
+.password-input input {
+  padding-right: 180px; /* Adjust padding to accommodate the icon */
+}
+
+.password-icon {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  right: 5px; /* Adjust the position of the icon as per your design */
+  cursor: pointer;
+}
