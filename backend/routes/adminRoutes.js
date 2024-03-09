@@ -235,7 +235,10 @@ const nodemailer = require('nodemailer');
 const adminSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
+  resetPasswordToken: Joi.string().allow(null), // Allow null value or string for resetPasswordToken
+  resetPasswordExpires: Joi.date().allow(null) // Allow null value or date for resetPasswordExpires
 });
+
 
 // Route for registering admin
  router.post('/register', async (req, res) => {
