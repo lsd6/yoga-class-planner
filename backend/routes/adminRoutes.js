@@ -235,6 +235,8 @@ const nodemailer = require('nodemailer');
 const adminSchema = Joi.object({
   email: Joi.string().email().required(),
   password: Joi.string().required(),
+  resetPasswordToken: Joi.string().allow(null), // Allow null value or string for resetPasswordToken
+  resetPasswordExpires: Joi.date().allow(null) // Allow null value or date for resetPasswordExpires
 });
 
 // Route for registering admin
@@ -284,6 +286,10 @@ router.post('/forgot-password', async (req, res) => {
     admin.resetPasswordExpires = Date.now() + 3600000; // Token expires in 1 hour
     await admin.save();
 
+     // Log token and admin object for debugging
+     console.log('Token generated:', token);
+     console.log('Admin object after token generation:', admin);
+
     // Send password reset email to admin
     const transporter = nodemailer.createTransport({
       service: 'Gmail',
@@ -318,6 +324,8 @@ router.post('/forgot-password', async (req, res) => {
 
      // Find admin by reset password token
      const admin = await Admin.findOne({ resetPasswordToken: token, resetPasswordExpires: { $gt: Date.now() } });
+     console.log('Retrieved admin:', admin);
+
      if (!admin) {
        return res.status(400).json({ error: 'Password reset token is invalid or has expired' });
      }
