@@ -1,4 +1,3 @@
-// StudentRegistration.js
 import React, { useState } from 'react';
 import axios from 'axios';
 
@@ -10,17 +9,17 @@ const StudentRegistration = () => {
   const handleRegistration = async (e) => {
     e.preventDefault();
     try {
-      // Send registration data to backend endpoint for student registration
+      
       const response = await axios.post('http://localhost:5001/api/students/register', {
         name,
         email,
         password,
       });
       console.log(response.data);
-      // Handle success response
+     
     } catch (error) {
       console.error('Error registering student:', error);
-      // Handle error
+      
     }
   };
 
