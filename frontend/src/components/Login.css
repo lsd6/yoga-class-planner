@@ -65,36 +65,35 @@
   margin-top: 10px;
 }
 
-/* Add these styles to your Login.css file */
+
 
 .login-container button.register-button {
-  padding: 12px 24px; /* Adjust padding for larger button */
-  background-color: #28a745; /* Green color */
+  padding: 12px 24px; 
+  background-color: #28a745; 
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 18px; /* Increase font size */
+  font-size: 18px; 
   cursor: pointer;
 }
 
 .login-container button.register-button:hover {
-  background-color: #218838; /* Darker green color on hover */
+  background-color: #218838; 
 }
-/* Add these styles to your Login.css file */
 
 .login-container button.forgot-password-button {
-  padding: 8px 16px; /* Adjust padding for the button */
-  background-color: #ffc107; /* Yellow color */
+  padding: 8px 16px; 
+  background-color: #ffc107; 
   color: #fff;
   border: none;
   border-radius: 5px;
-  font-size: 16px; /* Adjust font size */
+  font-size: 16px;
   cursor: pointer;
-  margin-top: 10px; /* Add margin to separate from other buttons */
+  margin-top: 10px; 
 }
 
 .login-container button.forgot-password-button:hover {
-  background-color: #e0a800; /* Darker yellow color on hover */
+  background-color: #e0a800; 
 }
 
 .password-input {
@@ -102,13 +101,13 @@
 }
 
 .password-input input {
-  padding-right: 180px; /* Adjust padding to accommodate the icon */
+  padding-right: 180px; 
 }
 
 .password-icon {
   position: absolute;
   top: 40%;
   transform: translateY(-50%);
-  right: 5px; /* Adjust the position of the icon as per your design */
+  right: 5px; 
   cursor: pointer;
 }

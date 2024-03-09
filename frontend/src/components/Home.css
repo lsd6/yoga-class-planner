@@ -1,34 +1,32 @@
-/* src/components/Home.css */
-
 .home-container {
-    position: relative; /* Set position to relative */
-    background-image: url('../../public/Assets/Images/background.jpg'); /* Set background image */
+    position: relative; 
+    background-image: url('../../public/Assets/Images/background.jpg'); 
     background-size: cover;
     background-position: center;
-    height: 100vh; /* Set height to fill the viewport */
+    height: 100vh; 
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff; /* Set text color */
+    color: #ffffff;
     text-align: center;
     z-index: 1;
   }
   
   .content-left,
   .content-right {
-    position: absolute; /* Position content absolutely */
-    top: 50%; /* Align content vertically */
-    transform: translateY(-50%); /* Adjust for vertical centering */
+    position: absolute; 
+    top: 50%;
+    transform: translateY(-50%);
   }
   
   .content-left {
-    left: 20px; /* Set left position for left content */
-    width: 40%; /* Set width for left content */
+    left: 20px; 
+    width: 40%; 
   }
   
   .content-right {
-    right: 20px; /* Set right position for right content */
-    width: 40%; /* Set width for right content */
+    right: 20px; 
+    width: 40%; 
   }
   
   .content-left h5{

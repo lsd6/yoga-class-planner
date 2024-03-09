@@ -1,45 +1,44 @@
-/* Register.css */
 .register-container {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  flex-direction: column; /* Set flex-direction to column */
+  flex-direction: column; 
 }
 .card {
   width: 50%;
-  min-height: 200px; /* Set a minimum height for the card */
-  background-color: #ffffff; /* White background color */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
-  padding: 20px; /* Padding inside the card */
-  transition: height 0.5s; /* Smooth transition for height change */
+  min-height: 200px; 
+  background-color: #ffffff; 
+  border-radius: 8px; 
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  transition: height 0.5s;
 }
 
 .card.expanded {
-  height: 400px; /* Adjusted height when the form is displayed */
+  height: 400px;
 }
 
 .card h4 {
-  text-align: center; /* Center-align the text */
+  text-align: center; 
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px; /* Add some space between the text and buttons */
+  margin-top: 20px; 
 }
 
 .role-button {
-  padding: 10px 20px; /* Add padding to the buttons */
-  margin: 0 10px; /* Add margin between the buttons */
-  background-color: #007bff; /* Blue background color */
-  color: #fff; /* White text color */
-  border: none; /* Remove border */
-  border-radius: 5px; /* Add border radius */
-  cursor: pointer; /* Add cursor pointer on hover */
+  padding: 10px 20px; 
+  margin: 0 10px; 
+  background-color: #007bff; 
+  color: #fff; 
+  border: none; 
+  border-radius: 5px; 
+  cursor: pointer; 
 }
 
 .role-button:hover {
-  background-color: #0056b3; /* Darker blue color on hover */
+  background-color: #0056b3; 
 }

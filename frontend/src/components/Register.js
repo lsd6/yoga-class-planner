@@ -1,4 +1,3 @@
-// Register.js
 import React, { useState } from 'react';
 import './Register.css';
 import TeacherRegistrationForm from './TeacherRegistrationForm';
