@@ -239,6 +239,7 @@ const adminSchema = Joi.object({
   resetPasswordExpires: Joi.date().allow(null) // Allow null value or date for resetPasswordExpires
 });
 
+
 // Route for registering admin
  router.post('/register', async (req, res) => {
    try {
