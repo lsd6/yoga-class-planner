@@ -10,13 +10,20 @@ import PasswordReset from './components/PasswordReset'; // Import the PasswordRe
 function App() {
   return (
     <Router>
-      <HeaderBar />
       <Routes>
-        <Route path="/" element={<Home />} />
+      <Route
+      path="/"
+      element={
+        <div>
+          <HeaderBar />
+          <Home />
+        </div>
+      }
+    />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password/:token" element={<PasswordReset />} /> {/* Define route for PasswordReset component */}
+        <Route path="/reset-password/:token" element={<PasswordReset />} />
       </Routes>
     </Router>
   );
