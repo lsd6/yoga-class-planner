@@ -1,6 +1,7 @@
 .teacher-registration-container {
   max-width: 600px;
   margin: 0 auto;
+  padding: 20px;
 }
 
 .form {
@@ -10,34 +11,58 @@
 }
 
 .form-group {
-  flex: 0 0 48%;
-  margin-bottom: 15px;
+  position: relative;
+  margin-bottom: 20px;
+  flex: 0 0 calc(48% - 10px);
 }
 
 .form-group label {
-  display: block;
-  margin-bottom: 5px;
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  color: #666;
+  transition: transform 0.3s, font-size 0.3s, color 0.3s;
 }
 
 .form-group input {
-  width: 100%;
-  padding: 10px;
+  width: calc(100% - 20px);
+  padding: 15px;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 18px;
+}
+
+.form-group input:focus + label,
+.form-group.focused label {
+  transform: translateY(-30px) translateX(-12px);
+  font-size: 18px;
+  color: #2f00ed;
 }
 
 .submit-button {
   width: 100%;
-  padding: 10px;
+  padding: 15px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 8px;
+  font-size: 18px;
   cursor: pointer;
+  margin-top: 20px;
 }
 
 .submit-button:hover {
   background-color: #0056b3;
+}
+
+
+@media (max-width: 576px) {
+
+
+  
+.form-group input:focus + label,
+.form-group.focused label {
+  color: transparent;
+}
+
 }

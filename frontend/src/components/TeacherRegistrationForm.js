@@ -45,21 +45,36 @@ const TeacherRegistrationForm = () => {
       console.error("Error registering teacher:", error.message);
       setErrorMessage(error.message);
     }
-  };
+};
+
+const handleFocus = (e) => {
+  const formGroup = e.target.parentNode;
+  formGroup.classList.add("focused");
+};
+
+const handleBlur = (e) => {
+  const formGroup = e.target.parentNode;
+  if (!e.target.value) {
+    formGroup.classList.remove("focused");
+  }
+};
+
 
   return (
     <div className="teacher-registration-container">
-      <h2>Teacher Registration Form</h2>
+      <h2>Instructor Registration Form</h2>
       {errorMessage && <p className="error-message">{errorMessage}</p>}
       <form onSubmit={handleFormSubmit} className="form">
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
+          type="email"
+          id="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
+        />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password:</label>
@@ -68,6 +83,8 @@ const TeacherRegistrationForm = () => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">
@@ -77,6 +94,8 @@ const TeacherRegistrationForm = () => {
             id="country"
             value={country}
             onChange={(e) => setCountry(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">
@@ -86,6 +105,8 @@ const TeacherRegistrationForm = () => {
             id="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">
@@ -95,6 +116,8 @@ const TeacherRegistrationForm = () => {
             id="address"
             value={address}
             onChange={(e) => setAddress(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">
@@ -104,6 +127,8 @@ const TeacherRegistrationForm = () => {
             id="city"
             value={city}
             onChange={(e) => setCity(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">
@@ -113,6 +138,8 @@ const TeacherRegistrationForm = () => {
             id="state"
             value={state}
             onChange={(e) => setState(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">
@@ -122,6 +149,8 @@ const TeacherRegistrationForm = () => {
             id="postalCode"
             value={postalCode}
             onChange={(e) => setPostalCode(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
         <div className="form-group">
@@ -131,6 +160,8 @@ const TeacherRegistrationForm = () => {
             id="phoneNumber"
             value={phoneNumber}
             onChange={(e) => setPhoneNumber(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
           />
         </div>
         <button type="submit" className="submit-button">

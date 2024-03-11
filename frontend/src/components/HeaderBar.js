@@ -1,30 +1,23 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './HeaderBar.css';
 import { FaBars } from 'react-icons/fa';
 
 const HeaderBar = () => {
-  const [showNavLinks, setShowNavLinks] = useState(false);
-  const [showHeaderBar, setShowHeaderBar] = useState(true); 
+  const [showNavLinks, setShowNavLinks] = useState(false); 
   const navigate = useNavigate();
-  const location = useLocation();
+
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
 
   const toggleNavLinks = () => {
     setShowNavLinks(!showNavLinks);
   };
 
-  const handleLoginClick = () => {
-    navigate('/login');
-    setShowHeaderBar(false); 
-  };
-
-  useEffect(() => {
-    const shouldShowHeaderBar = location.pathname !== '/login'; 
-    setShowHeaderBar(shouldShowHeaderBar);
-  }, [location]);
-
   return (
-    <div className={`header-bar ${showHeaderBar ? 'show' : 'hide'}`}>
+      <div className="header-bar">
       <div className="logo">
         <img src="/Assets/Images/company-logo.png" alt="Company Logo" />
       </div>
