@@ -1,5 +1,6 @@
+
 import React from 'react';
-import './Home.css'; 
+import './Home.css';
 import Lottie from 'lottie-react';
 import yogaAnimation from '../Images/yoga.json';
 

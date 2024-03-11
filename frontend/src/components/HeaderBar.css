@@ -1,112 +1,140 @@
 .header-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px;
-    color: #ffffff; 
-    background-color: transparent; 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  color: #ffffff;
+  background-color: transparent;
 }
-.header-bar.hide{
-    display: none;
+.header-bar.hide {
+  display: none;
 }
 
 .logo img {
-    width: 50px; 
+  width: 50px;
 }
 
 .company-name {
-    margin-left: 10px;
-    color: black; 
+  margin-left: 10px;
+  color: black;
 }
 
 .company-name h1 {
-    margin: 0;
-    font-size: 30px;
+  margin: 0;
+  font-size: 30px;
 }
 
 .nav-links ul {
-    list-style-type: none;
-    display: flex;
-    gap: 20px;
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
 }
 
 .nav-links ul li a {
-    text-decoration: none;
-    color: black;
+  text-decoration: none;
+  color: black;
 }
 
 .login-btn button {
-    background-color: black;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
 }
 
 .login-btn button:hover {
-    background-color: #333;
+  background-color: #333;
 }
 
 .login-btn {
-    margin-left: auto;
+  margin-left: auto;
 }
 
-/* Hamburger menu icon */
 .hamburger-menu {
-    display: none;
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: black;
+}
+
+@media (max-width: 500px) {
+  .logo img {
+    width: 40px;
+  }
+
+  .company-name h1 {
     font-size: 24px;
-    cursor: pointer;
-    color: black; 
-}
+  }
 
-/* Mobile Styles */
-@media (max-width: 425px) {
-    .logo img {
-        width: 40px;
-    }
+  .nav-links ul {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    top: 7%;
+    left: 0;
+    background-color: #ffffff;
+    width: 100%;
+    padding: 20px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
-    .company-name h1 {
-        font-size: 24px;
-    }
-
-    .nav-links ul {
-        list-style-type: none;
-        display: none; 
-        position: absolute; 
-        top: 7%; 
-        left: 0;
-        background-color: #ffffff;
-        width: 100%; 
-        padding: 20px 0; 
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-
-    .login-btn {
-        display: flex;
-    }
-
-    .hamburger-menu {
-        display: flex;
-    }
-}
-
-/* Mobile Navigation Links */
-.nav-links ul.show {
+  .login-btn {
     display: flex;
-    flex-direction: column;  
-    position: fixed;
-}
+  }
 
+  .hamburger-menu {
+    display: flex;
+  }
+}
 
 .header-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    color: #ffffff;
-    z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  color: #ffffff;
+  z-index: 2;
 }
 
+.nav-links ul.show {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  background-color: rgba(173, 216, 230, 1);
+  width: 100%;
+  top: 60px;
+  left: 0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  animation: slideIn 0.3s ease-in-out;
+}
 
+.nav-links ul.show li {
+  text-align: center;
+}
+
+.nav-links ul.show a {
+  color: #000000fc;
+  font-size: 18px;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-links ul.show a:hover {
+  color: #000;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
