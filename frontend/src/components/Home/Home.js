@@ -2,7 +2,7 @@
 import React from 'react';
 import './Home.css';
 import Lottie from 'lottie-react';
-import yogaAnimation from '../Images/yoga.json';
+import yogaAnimation from '../../Images/yoga.json';
 
 const Home = () => {
   return (

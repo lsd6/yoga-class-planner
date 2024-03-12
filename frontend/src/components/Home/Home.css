@@ -1,7 +1,7 @@
 
 .home-container {
   position: relative;
-  background-image: url('../../public/Assets/Images/background.jpg');
+  background-image: url('../../../public/Assets/Images/background.jpg');
   background-size: cover;
   background-position: center;
   height: 100vh;

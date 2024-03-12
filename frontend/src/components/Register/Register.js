@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
-import TeacherRegistrationForm from "./TeacherRegistrationForm";
-import StudentRegistration from "./StudentRegistration";
+import TeacherRegistrationForm from "../TeacherRegistrationForm/TeacherRegistrationForm";
+import StudentRegistration from "../StudentRegistration/StudentRegistration";
 
 const Register = () => {
   const [showTeacherForm, setShowTeacherForm] = useState(false);
