@@ -106,7 +106,7 @@ import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import "./Login.css";
 import Lottie from 'lottie-react';
-import yogaAnimation from "../Images/yoga2.json";
+import yogaAnimation from "../../Images/yoga2.json";
 
 const Login = () => {
   const [email, setEmail] = useState("");

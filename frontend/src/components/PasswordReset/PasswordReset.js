@@ -3,8 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Lottie from 'lottie-react';
 import "./PasswordReset.css";
-import reset from "../Images/reset.json";
-import resetsuccess from "../Images/resetsuccess.json";
+import reset from "../../Images/reset.json";
+import resetsuccess from "../../Images/resetsuccess.json";
 
 const PasswordReset = () => {
   const { token } = useParams();

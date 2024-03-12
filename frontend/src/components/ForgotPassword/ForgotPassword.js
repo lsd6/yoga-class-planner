@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./ForgotPassword.css";
 import Lottie from "lottie-react";
-import forgotAnimation from "../Images/forgot.json";
-import resetemail from "../Images/resetemail.json";
+import forgotAnimation from "../../Images/forgot.json";
+import resetemail from "../../Images/resetemail.json";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
