@@ -228,6 +228,8 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
 const Admin = require('../models/Admin');
+const Student = require('../models/Student');
+const Teacher = require('../models/Teacher');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
@@ -377,4 +379,37 @@ router.post('/forgot-password', async (req, res) => {
   }
  });
 
- module.exports = router;
+ // Route for fetching all teachers
+router.get('/teachers', async (req, res) => {
+  try {
+    const teachers = await Teacher.find();
+    res.status(200).json(teachers);
+  } catch (error) {
+    console.error('Error fetching teachers:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+ // Route for getting the count of registered teachers
+router.get('/teachers/count', async (req, res) => {
+  try {
+    const count = await Teacher.countDocuments();
+    res.status(200).json({ count });
+  } catch (error) {
+    console.error('Error getting count of teachers:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Route for getting the count of registered students
+router.get('/students/count', async (req, res) => {
+  try {
+    const count = await Student.countDocuments();
+    res.status(200).json({ count });
+  } catch (error) {
+    console.error('Error getting count of students:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+module.exports = router;
