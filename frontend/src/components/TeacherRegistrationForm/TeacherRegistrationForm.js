@@ -5,6 +5,7 @@ import "./TeacherRegistrationForm.css";
 const TeacherRegistrationForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(""); 
   const [country, setCountry] = useState("");
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -18,15 +19,20 @@ const TeacherRegistrationForm = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (!email || !password || !country || !name) {
+      if (!email || !password || !confirmPassword || !country || !name) {
         throw new Error("Please fill in all required fields.");
       }
-
+  
+      if (password !== confirmPassword) {
+        throw new Error("Passwords do not match.");
+      }
+  
       const response = await axios.post(
         "http://localhost:5001/api/teachers/register",
         {
           email,
           password,
+          confirmPassword,
           personalDetails: {
             country,
             name,
@@ -39,26 +45,25 @@ const TeacherRegistrationForm = () => {
           },
         }
       );
-
+  
       console.log(response.data);
     } catch (error) {
       console.error("Error registering teacher:", error.message);
       setErrorMessage(error.message);
     }
-};
+  };
+  
+  const handleFocus = (e) => {
+    const formGroup = e.target.parentNode;
+    formGroup.classList.add("focused");
+  };
 
-const handleFocus = (e) => {
-  const formGroup = e.target.parentNode;
-  formGroup.classList.add("focused");
-};
-
-const handleBlur = (e) => {
-  const formGroup = e.target.parentNode;
-  if (!e.target.value) {
-    formGroup.classList.remove("focused");
-  }
-};
-
+  const handleBlur = (e) => {
+    const formGroup = e.target.parentNode;
+    if (!e.target.value) {
+      formGroup.classList.remove("focused");
+    }
+  };
 
   return (
     <div className="teacher-registration-container">
@@ -68,13 +73,13 @@ const handleBlur = (e) => {
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          onFocus={handleFocus}
-          onBlur={handleBlur}
-        />
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
         </div>
         <div className="form-group">
           <label htmlFor="password">Password:</label>
@@ -83,6 +88,17 @@ const handleBlur = (e) => {
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirm Password:</label> {/* Added confirmPassword input field */}
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
