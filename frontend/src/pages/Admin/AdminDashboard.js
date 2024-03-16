@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import AdminHeaderBar from '../../components/dashboard-components/AdminDashboard/AdminHeaderBar/AdminHeaderBar';
-import TeacherTable from '../../components/dashboard-components/AdminDashboard/TeacherTable./TeacherTable';
+import TeacherTable from '../../components/dashboard-components/AdminDashboard/TeacherTable/TeacherTable';
 import StudentTable from '../../components/dashboard-components/AdminDashboard/StudentTable/StudentTable'; // Import StudentTable
 
 const AdminDashboard = () => {
