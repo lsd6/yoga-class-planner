@@ -1,15 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const cors = require('cors'); // Import cors middleware
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
 app.use(bodyParser.json());
-app.use(cors()); // Enable CORS for all routes
+app.use(cors());
 
-// Update the connection string with the one from MongoDB Atlas
 const MONGODB_URI = 'mongodb+srv://sowjanya:Sowjanya34@cluster0.9utgvzp.mongodb.net/';
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -19,10 +18,12 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true 
 const adminRoutes = require('./routes/adminRoutes');
 const studentRoutes = require('./routes/studentRoutes');
 const teacherRoutes = require('./routes/teacherRoutes');
+const classRoutes = require('./routes/classRoutes'); // Import classRoutes
 
 app.use('/api/admins', adminRoutes);
 app.use('/api/students', studentRoutes);
 app.use('/api/teachers', teacherRoutes);
+app.use('/api/classes', classRoutes); // Mount classRoutes at '/api/classes'
 
 app.get('/', (req, res) => {
     res.send('Welcome to the Yoga Class Planner API');
