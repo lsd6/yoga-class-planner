@@ -7,9 +7,10 @@ import resetemail from "../../Images/resetemail.json";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const [userType, setUserType] = useState("admin"); 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
-  const [emailsent, SetEmailsent] = useState(false);
+  const [emailSent, setEmailSent] = useState(false);
 
   const handleForgotPassword = async () => {
     try {
@@ -17,12 +18,20 @@ const ForgotPassword = () => {
         throw new Error("Please enter your email.");
       }
 
-      const response = await axios.post(
-        "http://localhost:5001/api/admins/forgot-password",
-        { email }
-      );
+      let endpoint;
+      if (userType === 'admin') {
+        endpoint = "http://localhost:5001/api/admins/forgot-password";
+      } else if (userType === 'teacher') {
+        endpoint = "http://localhost:5001/api/teachers/forgot-password";
+      } else if (userType === 'student') {
+        endpoint = "http://localhost:5001/api/students/forgot-password";
+      } else {
+        throw new Error("Invalid user type.");
+      }
 
-      SetEmailsent(true);
+      const response = await axios.post(endpoint, { email });
+
+      setEmailSent(true);
       setMessage(response.data.message);
     } catch (error) {
       setError(error.message || "An error occurred.");
@@ -38,16 +47,21 @@ const ForgotPassword = () => {
 
   return (
     <div className="forgot-password-container">
-      <div className={emailsent ? "dis" : "animation-container"}>
+      <div className={emailSent ? "dis" : "animation-container"}>
         <Lottie animationData={forgotAnimation} />
       </div>
-      <div className={emailsent ? "animation-container" : "dis"}>
+      <div className={emailSent ? "animation-container" : "dis"}>
         <Lottie animationData={resetemail} />
       </div>
       <div className="content-container">
         <h2>Forgot Password</h2>
         {message && <p className="success-message">{message}</p>}
         {error && <p className="error-message">{error}</p>}
+        <select value={userType} onChange={(e) => setUserType(e.target.value)}>
+          <option value="admin">Admin</option>
+          <option value="teacher">Teacher</option>
+          <option value="student">Student</option>
+        </select>
         <input
           type="email"
           placeholder="Enter your email"

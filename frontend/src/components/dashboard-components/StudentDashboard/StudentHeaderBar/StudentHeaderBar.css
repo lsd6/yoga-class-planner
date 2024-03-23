@@ -1,0 +1,25 @@
+/* StudentHeaderBar.css */
+
+.student-header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #2196f3;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .logo {
+    height: 40px;
+    margin-right: 20px;
+  }
+  
+  .account-icon {
+    cursor: pointer;
+  }
+  
+  /* Style for the dropdown menu */
+  #account-menu {
+    margin-top: 30px; /* Adjust as needed */
+  }
+  
