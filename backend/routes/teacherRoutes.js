@@ -8,6 +8,7 @@ const path = require('path');
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 
+console.log('Teacher model:', Teacher);
 
 // Joi schema for teacher registration data
 const teacherSchema = Joi.object({
@@ -77,27 +78,30 @@ router.post('/register', upload.single('image'), async (req, res) => {
   }
 });
 
-// Teacher login route
+
+// In your login route
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    // Check if email and password are provided
-    if (!email || !password) {
-      return res.status(400).json({ error: 'Email and password are required' });
-    }
+    console.log('Login request for email:', email);
 
     // Find the teacher by email
     const teacher = await Teacher.findOne({ email });
+
+    console.log('Retrieved teacher:', teacher);
+
     if (!teacher) {
       return res.status(404).json({ error: 'Teacher not found' });
     }
 
-    // Compare passwords
-    const isPasswordValid = await teacher.comparePassword(password);
-    if (!isPasswordValid) {
-      return res.status(401).json({ error: 'Invalid email or password' });
-    }
+   // Compare passwords
+   const isPasswordValid = await bcrypt.compare(password, teacher.password);
+
+if (!isPasswordValid) {
+  return res.status(401).json({ error: 'Invalid email or password' });
+}
+
 
     // Return success message
     res.status(200).json({ message: 'Login successful' });
@@ -106,6 +110,7 @@ router.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
 
 // Forgot password route
 router.post('/forgot-password', async (req, res) => {
@@ -195,6 +200,8 @@ router.post('/reset-password', async (req, res) => {
     // Hash the new password
     const hashedPassword = await bcrypt.hash(newPassword, 10);
 
+    console.log('New hashed password:', hashedPassword); // Add this line for debugging
+
     // Update teacher's password and reset token fields
     teacher.password = hashedPassword;
     teacher.resetPasswordToken = undefined;
@@ -207,6 +214,8 @@ router.post('/reset-password', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
+
+
 
 
 // Update teacher details route
