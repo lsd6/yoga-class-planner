@@ -16,6 +16,11 @@ const adminSchema = Joi.object({
   resetPasswordExpires: Joi.date().allow(null) // Allow null value or date for resetPasswordExpires
 });
 
+const resetPasswordSchema = Joi.object({
+  token: Joi.string().required(),
+  newPassword: Joi.string().required(),
+});
+
 
 // Route for registering admin
  router.post('/register', async (req, res) => {
@@ -98,6 +103,12 @@ router.post('/forgot-password', async (req, res) => {
 // Route for resetting password for admin
  router.post('/reset-password', async (req, res) => {
    try {
+
+     // Validate request body against schema
+     const { error } = resetPasswordSchema.validate(req.body);
+     if (error) {
+       return res.status(400).json({ error: error.details[0].message });
+     }
      const { token, newPassword } = req.body;
 
      // Find admin by reset password token

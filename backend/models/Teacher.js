@@ -32,16 +32,20 @@ teacherSchema.pre('save', async function(next) {
     this.password = hashedPassword;
     next();
   } catch (error) {
-    next(error); 
+    next(error);
   }
 });
 
-// Method to compare passwords during login
+// Method to compare passwords
 teacherSchema.methods.comparePassword = async function(candidatePassword) {
   try {
-    return await bcrypt.compare(candidatePassword, this.password);
+    console.log('Comparing passwords...');
+    const isMatch = await bcrypt.compare(candidatePassword, this.password);
+    console.log('Password comparison result:', isMatch);
+    return isMatch;
   } catch (error) {
-    throw error; 
+    console.error('Error comparing passwords:', error);
+    return false;
   }
 };
 
