@@ -33,7 +33,6 @@ const StudentTable = () => {
               <TableRow>
                 <TableCell>Name</TableCell>
                 <TableCell>Email</TableCell>
-                {/* Add more table headers as needed */}
               </TableRow>
             </TableHead>
             <TableBody>
@@ -41,7 +40,6 @@ const StudentTable = () => {
                 <TableRow key={student._id}>
                   <TableCell>{student.name}</TableCell>
                   <TableCell>{student.email}</TableCell>
-                  {/* Add more table cells for additional fields */}
                 </TableRow>
               ))}
             </TableBody>

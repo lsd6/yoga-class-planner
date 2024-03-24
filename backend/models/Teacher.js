@@ -14,7 +14,9 @@ const teacherSchema = new mongoose.Schema({
     showContactDetails: { type: Boolean, default: true },
     phoneNumber: { type: String },
     displayPhoneNumber: { type: Boolean, default: true },
-  }
+  },
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 
 // Hash password before saving to the database
@@ -30,16 +32,20 @@ teacherSchema.pre('save', async function(next) {
     this.password = hashedPassword;
     next();
   } catch (error) {
-    next(error); // Pass error to the next middleware
+    next(error);
   }
 });
 
-// Method to compare passwords during login
+// Method to compare passwords
 teacherSchema.methods.comparePassword = async function(candidatePassword) {
   try {
-    return await bcrypt.compare(candidatePassword, this.password);
+    console.log('Comparing passwords...');
+    const isMatch = await bcrypt.compare(candidatePassword, this.password);
+    console.log('Password comparison result:', isMatch);
+    return isMatch;
   } catch (error) {
-    throw error; // Throw error if password comparison fails
+    console.error('Error comparing passwords:', error);
+    return false;
   }
 };
 

@@ -6,13 +6,13 @@ import "./PasswordReset.css";
 import reset from "../../Images/reset.json";
 import resetsuccess from "../../Images/resetsuccess.json";
 
-const PasswordReset = () => {
+const PasswordReset = ({ userType, setUserType }) => {
   const { token } = useParams();
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
-  const [background,SetBackground] = useState(false);
+  const [background, setBackground] = useState(false);
 
   const handlePasswordReset = async () => {
     try {
@@ -21,24 +21,47 @@ const PasswordReset = () => {
         return;
       }
 
-      await axios.post('http://localhost:5001/api/admins/reset-password', { token, newPassword: password });
-      SetBackground(true);
+      let endpoint;
+      if (userType === 'admin') {
+        endpoint = 'http://localhost:5001/api/admins/reset-password';
+      } else if (userType === 'teacher') {
+        endpoint = 'http://localhost:5001/api/teachers/reset-password';
+      } else if (userType === 'student') {
+        endpoint = 'http://localhost:5001/api/students/reset-password';
+      } else {
+        throw new Error('Invalid user type');
+      }
+
+      await axios.post(endpoint, { token, newPassword: password });
+      setBackground(true);
       setSuccess('Password reset successfully');
     } catch (error) {
-      setError(error.response.data.error);
+      if (error.response && error.response.data) {
+        setError(error.response.data.error);
+      } else {
+        setError('An error occurred while resetting the password');
+      }
     }
   };
 
   return (
     <div className="password-reset-container">
-    <div className={background ? 'dis' : 'ani-container'}>
-    <Lottie animationData={reset} />
-  </div>
-  <div className={background ? 'ani-container' : 'dis'}>
-    <Lottie animationData={resetsuccess} />
-  </div>  
+      <div className={background ? 'dis' : 'ani-container'}>
+        <Lottie animationData={reset} />
+      </div>
+      <div className={background ? 'ani-container' : 'dis'}>
+        <Lottie animationData={resetsuccess} />
+      </div>  
       <div className="form-container">
         <h2>Password Reset</h2>
+        {/* User Type Dropdown */}
+        <div className="input-group">
+          <select value={userType} onChange={(e) => setUserType(e.target.value)}>
+            <option value="admin">Admin</option>
+            <option value="teacher">Teacher</option>
+            <option value="student">Student</option>
+          </select>
+        </div>
         {success && <p className="success-message">{success}</p>}
         {error && <p className="error-message">{error}</p>}
         <div className="input-group">
