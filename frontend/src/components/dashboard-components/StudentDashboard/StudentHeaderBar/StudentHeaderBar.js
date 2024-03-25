@@ -1,3 +1,4 @@
+// StudentHeaderBar.js
 import React, { useState } from 'react';
 import logo from '../../../../Images/company-logo.png';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -5,7 +6,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import '../StudentHeaderBar/StudentHeaderBar.css';
 
-const StudentHeaderBar = () => {
+const StudentHeaderBar = ({showform}) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -29,6 +30,7 @@ const StudentHeaderBar = () => {
   return (
     <div className="student-header-bar">
       <img src={logo} alt="Company Logo" className="logo" />
+      <button className="menu-button" onClick={showform}>Book a Class</button>
       <div className="account-icon" onClick={handleClick}>
         <AccountCircleIcon />
       </div>

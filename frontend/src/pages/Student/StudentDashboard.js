@@ -1,15 +1,22 @@
 // StudentDashboard.js
-
-import React from 'react';
-import StudentHeaderBar from '../../components/dashboard-components/StudentDashboard/StudentHeaderBar/StudentHeaderBar'; // Import the StudentHeaderBar component
-import StudentBookingForm from '../Student/StudentBookingForm'; // Import the StudentBookingForm component
+import React, { useState } from 'react';
+import StudentHeaderBar from '../../components/dashboard-components/StudentDashboard/StudentHeaderBar/StudentHeaderBar';
+import StudentBookingForm from '../Student/StudentBookingForm';
 
 const StudentDashboard = () => {
+  const [showBookingForm, setShowBookingForm] = useState(false);
+
+  const handleBookClassClick = () => {
+    setShowBookingForm(!showBookingForm);
+  };
+
   return (
     <div>
-      <StudentHeaderBar />
+      <StudentHeaderBar showform = {handleBookClassClick}/>
       <h1>Welcome to Student Dashboard</h1>
-      <StudentBookingForm />
+      {showBookingForm ? (
+        <StudentBookingForm />
+      ) : null}
     </div>
   );
 };

@@ -3,7 +3,7 @@ import axios from 'axios';
 import Loader from '../../../Loader/Loader'; // Import the Loader component
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
-const TeacherTable = () => {
+const TeacherTable = ({ onTeacherClick }) => {
   const [teachers, setTeachers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -43,7 +43,7 @@ const TeacherTable = () => {
             </TableHead>
             <TableBody>
               {teachers.map((teacher) => (
-                <TableRow key={teacher._id}>
+                <TableRow key={teacher._id} onClick={() => onTeacherClick(teacher)}>
                   <TableCell>{teacher.personalDetails.name}</TableCell>
                   <TableCell>{teacher.email}</TableCell>
                   <TableCell>{teacher.personalDetails.country}</TableCell>

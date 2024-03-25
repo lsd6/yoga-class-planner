@@ -1,0 +1,124 @@
+.about-me-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 50px;
+}
+
+.about-me-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.about-me-heading {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.about-me-subtitle {
+  font-size: 24px;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.about-me-text {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.about-me-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-me-list li {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.about-me-image img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-info h2 {
+  font-size: 24px;
+  color: #333;
+  font-family: 'Montserrat', sans-serif;
+  margin-bottom: 20px;
+}
+
+.contact-info p {
+  font-size: 16px;
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.contact-button button {
+  background-color: #ff6b6b;
+  color: #fff;
+  border: none;
+  padding: 15px 30px;
+  font-size: 18px;
+  cursor: pointer;
+  border-radius: 50px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.contact-button button:hover {
+  background-color: #d83c3c;
+  transform: translateY(-2px);
+}
+
+.contact-button button:focus {
+  outline: none;
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.social-icon {
+  font-size: 40px;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.social-icon:hover {
+  transform: scale(1.2);
+}
+
+.insta {
+  color: #bc2a8d;
+}
+
+.fb {
+  color: #3b5998;
+}
+
+.twitter {
+  color: #1da1f2;
+}

@@ -1,37 +1,51 @@
 /* TeacherHeaderBar.css */
 
 .teacher-header-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 20px;
-    background-color: #2196f3;
-    color: white;
-  }
-  
-  .logo {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .menu {
-    display: flex;
-    align-items: center;
-  }
-  
-  .menu-button {
-    background-color: transparent;
-    border: none;
-    color: white;
-    cursor: pointer;
-    margin-left: 20px;
-  }
-  
-  .menu-button:hover {
-    text-decoration: underline;
-  }
-  
-  .account-icon {
-    cursor: pointer;
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #6c5ce7; /* Updated header color */
+  color: #fff; /* Text color for the header */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  width: 40px; /* Adjust size as needed */
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+}
+
+.menu-button {
+  background-color: transparent;
+  border: none;
+  color: #fff; /* Text color for the menu button */
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.menu-button:hover {
+  text-decoration: underline;
+}
+
+.account-icon {
+  cursor: pointer;
+}
+
+.upcoming-classes-button {
+  background-color: #3d3b8e; /* Updated button color */
+  color: #fff; /* Text color for the button */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.upcoming-classes-button:hover {
+  background-color: #2b2874; /* Updated button hover color */
+}
