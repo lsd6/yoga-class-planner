@@ -7,7 +7,7 @@ import resetemail from "../../Images/resetemail.json";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
-  const [userType, setUserType] = useState("admin"); 
+  const [userType, setUserType] = useState("admin");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [emailSent, setEmailSent] = useState(false);
@@ -19,11 +19,11 @@ const ForgotPassword = () => {
       }
 
       let endpoint;
-      if (userType === 'admin') {
+      if (userType === "admin") {
         endpoint = "http://localhost:5001/api/admins/forgot-password";
-      } else if (userType === 'teacher') {
+      } else if (userType === "teacher") {
         endpoint = "http://localhost:5001/api/teachers/forgot-password";
-      } else if (userType === 'student') {
+      } else if (userType === "student") {
         endpoint = "http://localhost:5001/api/students/forgot-password";
       } else {
         throw new Error("Invalid user type.");

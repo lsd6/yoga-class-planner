@@ -3,7 +3,6 @@ import TeacherHeaderBar from '../../components/dashboard-components/TeacherDashb
 import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-
 import ClassDetailsModal from '../../components/ClassDetailsModal/ClassDetailsModal';
 import axios from 'axios';
 
@@ -13,6 +12,7 @@ const TeacherDashboard = () => {
   const [selectedClass, setSelectedClass] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [classes, setClasses] = useState([]);
+  const [isCalendarVisible, setIsCalendarVisible] = useState(false); // New state to toggle calendar visibility
 
   useEffect(() => {
     fetchClassSchedules();
@@ -38,21 +38,27 @@ const TeacherDashboard = () => {
     setIsModalOpen(false);
   };
 
+  const handleUpcomingClassesClick = () => {
+    setIsCalendarVisible(!isCalendarVisible);
+  };
+
   return (
     <div>
-      <TeacherHeaderBar />
-      <Calendar
-        localizer={localizer}
-        events={classes.map(c => ({
-          title: `${c.className} - ${c.category}`,
-          classId: c._id,
-          start: new Date(c.bookingDateTime),
-          end: new Date(c.bookingDateTime), // You can adjust this if needed
-          allDay: false // Set to false for displaying time
-        }))}
-        onSelectEvent={handleEventClick}
-      />
-
+      <TeacherHeaderBar onUpcomingClassesClick={handleUpcomingClassesClick} />
+      {isCalendarVisible && ( // Render calendar if isCalendarVisible is true
+        <Calendar
+          localizer={localizer}
+          events={classes.map(c => ({
+            title: `${c.className} - ${c.category}`,
+            classId: c._id,
+            start: new Date(c.bookingDateTime),
+            end: new Date(c.bookingDateTime), // You can adjust this if needed
+            allDay: false // Set to false for displaying time
+          }))}
+          onSelectEvent={handleEventClick}
+          defaultView="week"
+        />
+      )}
       {selectedClass && (
         <ClassDetailsModal
           isOpen={isModalOpen}

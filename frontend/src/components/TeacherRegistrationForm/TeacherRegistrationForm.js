@@ -15,43 +15,49 @@ const TeacherRegistrationForm = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [displayPhoneNumber, setDisplayPhoneNumber] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (!email || !password || !confirmPassword || !country || !name) {
-        throw new Error("Please fill in all required fields.");
-      }
-  
-      if (password !== confirmPassword) {
-        throw new Error("Passwords do not match.");
-      }
-  
-      const response = await axios.post(
-        "http://localhost:5001/api/teachers/register",
-        {
-          email,
-          password,
-          confirmPassword,
-          personalDetails: {
-            country,
-            name,
-            address,
-            city,
-            state,
-            postalCode,
-            phoneNumber,
-            displayPhoneNumber,
-          },
-        }
-      );
-  
-      console.log(response.data);
-    } catch (error) {
-      console.error("Error registering teacher:", error.message);
-      setErrorMessage(error.message);
+  e.preventDefault();
+  try {
+    if (!email || !password || !confirmPassword || !country || !name) {
+      throw new Error("Please fill in all required fields.");
     }
-  };
+
+    if (password !== confirmPassword) {
+      throw new Error("Passwords do not match.");
+    }
+
+    const response = await axios.post(
+      "http://localhost:5001/api/teachers/register",
+      {
+        email,
+        password,
+        confirmPassword,
+        personalDetails: {
+          country,
+          name,
+          address,
+          city,
+          state,
+          postalCode,
+          phoneNumber,
+          displayPhoneNumber,
+        },
+      }
+    );
+
+    console.log(response.data);
+    setSuccessMessage("Registration successful! Welcome aboard!");
+  } catch (error) {
+    console.error("Error registering teacher:", error.message);
+    if (error.response && error.response.status === 400) {
+      setErrorMessage("This email address is already registered. Please use a different email.");
+    } else {
+      setErrorMessage("Error registering teacher. Please try again.");
+    }
+  }
+};
   
   const handleFocus = (e) => {
     const formGroup = e.target.parentNode;
@@ -68,7 +74,16 @@ const TeacherRegistrationForm = () => {
   return (
     <div className="teacher-registration-container">
       <h2>Instructor Registration Form</h2>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
+      {errorMessage && (
+        <div className="error">
+          <p>{errorMessage}</p>
+        </div>
+      )}
+      {successMessage && (
+        <div className="success">
+          <p>{successMessage}</p>
+        </div>
+      )}
       <form onSubmit={handleFormSubmit} className="form">
         <div className="form-group">
           <label htmlFor="email">Email:</label>
@@ -93,7 +108,7 @@ const TeacherRegistrationForm = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="confirmPassword">Confirm Password:</label> {/* Added confirmPassword input field */}
+          <label htmlFor="confirmPassword">Confirm Password:</label>
           <input
             type="password"
             id="confirmPassword"

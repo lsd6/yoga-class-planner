@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Lottie from 'lottie-react';
 import "./PasswordReset.css";
@@ -13,6 +13,8 @@ const PasswordReset = ({ userType, setUserType }) => {
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
   const [background, setBackground] = useState(false);
+  const [redirecting, setRedirecting] = useState(false); // State to track redirecting
+  const navigate = useNavigate();
 
   const handlePasswordReset = async () => {
     try {
@@ -35,9 +37,15 @@ const PasswordReset = ({ userType, setUserType }) => {
       await axios.post(endpoint, { token, newPassword: password });
       setBackground(true);
       setSuccess('Password reset successfully');
+      setRedirecting(true);
+      setTimeout(() => {
+        navigate('/login');
+      }, 5000); // Redirect after 5 seconds
     } catch (error) {
       if (error.response && error.response.data) {
         setError(error.response.data.error);
+      } else if (error.message === 'Network Error') {
+        setError('Network error occurred. Please check your internet connection.');
       } else {
         setError('An error occurred while resetting the password');
       }
@@ -64,6 +72,7 @@ const PasswordReset = ({ userType, setUserType }) => {
         </div>
         {success && <p className="success-message">{success}</p>}
         {error && <p className="error-message">{error}</p>}
+        {redirecting && <p className="redirect-message">Redirecting to login page...</p>}
         <div className="input-group">
           <input
             type="password"

@@ -5,7 +5,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import '../TeacherHeaderBar/TeacherHeaderBar.css';
 
-const TeacherHeaderBar = () => {
+const TeacherHeaderBar = ({ onUpcomingClassesClick }) => {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -29,6 +29,9 @@ const TeacherHeaderBar = () => {
   return (
     <div className="teacher-header-bar">
       <img src={logo} alt="Company Logo" className="logo" />
+      <button className="upcoming-classes-button" onClick={onUpcomingClassesClick}>
+        Upcoming Classes
+      </button>
       <div className="account-icon" onClick={handleClick}>
         <AccountCircleIcon />
       </div>

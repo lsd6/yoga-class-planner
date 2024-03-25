@@ -6,6 +6,8 @@ const StudentRegistration = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const handleRegistration = async (e) => {
     e.preventDefault();
@@ -18,9 +20,15 @@ const StudentRegistration = () => {
           password,
         }
       );
+      setSuccessMessage("Registration successful! Welcome aboard!");
       console.log(response.data);
     } catch (error) {
-      console.error("Error registering student:", error);
+      console.error("Error registering teacher:", error.message);
+      if (error.response && error.response.status === 400) {
+        setErrorMessage("This email address is already registered. Please use a different email.");
+      } else {
+        setErrorMessage("Error registering teacher. Please try again.");
+      }
     }
   };
 
@@ -39,6 +47,16 @@ const StudentRegistration = () => {
   return (
     <div className="teacher-registration-container">
       <h2>Student Registration</h2>
+      {successMessage && (
+        <div className="success">
+          <p>{successMessage}</p>
+        </div>
+      )}
+      {errorMessage && (
+        <div className="error">
+          <p>{errorMessage}</p>
+        </div>
+      )}
       <form className="form" onSubmit={handleRegistration}>
         <div className="form-group">
           <label htmlFor="name">Name:</label>

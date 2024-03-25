@@ -1,25 +1,39 @@
-/* StudentHeaderBar.css */
 
 .student-header-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #2196f3;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  .logo {
-    height: 40px;
-    margin-right: 20px;
-  }
-  
-  .account-icon {
-    cursor: pointer;
-  }
-  
-  /* Style for the dropdown menu */
-  #account-menu {
-    margin-top: 30px; /* Adjust as needed */
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #2196f3;
+  border-bottom: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  height: 40px;
+  margin-right: 20px;
+}
+
+.menu-button {
+  background-color: #3f51b5;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menu-button:hover {
+  background-color: #303f9f;
+  text-decoration-line: none;
+}
+
+.account-icon {
+  cursor: pointer;
+}
+
+#account-menu {
+  margin-top: 30px;
+}
